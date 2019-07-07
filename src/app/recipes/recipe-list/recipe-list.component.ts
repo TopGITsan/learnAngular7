@@ -7,7 +7,6 @@ import { Recipe } from "../recipe.model";
   styleUrls: ["./recipe-list.component.css"]
 })
 export class RecipeListComponent implements OnInit {
-  shadow: string;
   recipes: Recipe[] = [
     new Recipe(
       "Lasagna",
@@ -24,8 +23,4 @@ export class RecipeListComponent implements OnInit {
 
   ngOnInit() {}
 
-  changeStyle($event){
-    this.shadow = $event.type == 'mouseover' ? '0 0 6px grey' : 'none';
-    // this.shadow = $event.type == 'mouseout' ? 'none' : '0 0 6px grey';
-  }
 }
