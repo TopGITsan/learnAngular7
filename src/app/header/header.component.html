@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm mb-3">
   <a href="#" class="navbar-brand">
     <img src="../assets/bootstrap-solid.svg" alt="Company logo" width="30" height="30" class="d-inline-block align-top">
     Recipes Book
@@ -20,11 +20,11 @@
       </li>
     </ul>
     <ul class="navbar-nav navbar-right">
-      <a href="#" class="dropdown-toggle" role="button">Manage</a>
-      <li class="dropdown">
-        <ul class="dropdown-menu">
-          <li><a href="#">Save Data</a></li>
-          <li><a href="#">Fetch Data</a></li>
+      <a href="#" class="dropdown-toggle" role="button" (click)="onShowDropdown()">Manage</a>
+      <li class="dropdown dropleft">
+        <ul class="dropdown-menu mt-4" [ngClass]="{show: isOpen === true}">
+          <li><a class="dropdown-item" href="#">Save Data</a></li>
+          <li><a class="dropdown-item" href="#">Fetch Data</a></li>
         </ul>
       </li>
     </ul>
