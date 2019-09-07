@@ -1,4 +1,4 @@
-<a href="#" class="list-group-item clearfix m-2" 
+<a class="list-group-item clearfix m-2" style="cursor: pointer"
   [ngStyle]="{'box-shadow': shadow}" (mouseover)="changeStyle($event)"
   (mouseout)="changeStyle($event)"
   (click)="onSelected()">
@@ -9,4 +9,4 @@
   <span class="float-right m-3">
     <img [src]="recipe.imagePath" alt="{{recipe.name}}" class="img-responsive m-1" style="max-height: 50px;">
   </span>
-</a>
+</a> 
