@@ -1,7 +1,8 @@
-<a class="list-group-item clearfix m-2" style="cursor: pointer"
+<a
+  [routerLink]="[index]"
+  class="list-group-item clearfix m-2" style="cursor: pointer"
   [ngStyle]="{'box-shadow': shadow}" (mouseover)="changeStyle($event)"
-  (mouseout)="changeStyle($event)"
-  (click)="onSelected()">
+  (mouseout)="changeStyle($event)">
   <div class="float-left">
     <h4 class="list-group-item-heading">{{recipe.name}}</h4>
     <p class="list-group-item-text">{{recipe.description}}</p>
