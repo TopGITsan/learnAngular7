@@ -4,10 +4,13 @@ import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
+
+  recipeActivate = new Subject();
 
   private recipes: Recipe[] = [
     new Recipe(

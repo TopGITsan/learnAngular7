@@ -25,6 +25,7 @@ export class RecipeDetailComponent implements OnInit {
 
   onShowDropdown() {
     this.isOpen = !this.isOpen;
+    this.recipeService.recipeActivate.next(this.recipe);
   }
 
   onAddToShoppingList() {
