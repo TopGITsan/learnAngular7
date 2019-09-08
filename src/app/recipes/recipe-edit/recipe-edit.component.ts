@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, Observer, interval, Subscription } from 'rxjs';
+import { map, filter, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -21,8 +22,8 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     });
     // learn more at reactivex.io/rxjs
     // create an observable witch runs infinitly
-    const myNumbers = interval(1000);
-    this.numberObservableSubs = myNumbers.subscribe((num: number) => { console.log('Data form observable: ', num);});
+    const myNumbers = interval(1000).pipe(map((data: number) => data * 3));
+    this.numberObservableSubs = myNumbers.subscribe((num: number) => { console.log('Data form observable: ', num); });
 
     // create an custom observable witch completes
     const myObservable = Observable.create((observer: Observer<string>) => {
