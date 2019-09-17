@@ -32,10 +32,10 @@
           <label for="secret">Secret Question</label>
           <select id="secret" 
             class="form-control"
-            ngModel
+            [ngModel]="defaultQuestion"
             name="secret">
-            <option>Your first pet?</option>
-            <option>Your first teacher?</option>
+            <option value="pet">Your first pet?</option>
+            <option value="teacher">Your first teacher?</option>
           </select>
         </div>
         <button type="submit" 
