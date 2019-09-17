@@ -23,4 +23,17 @@ export class TemplateFormComponent implements OnInit {
   onSubmit() {
     console.log(this.submitForm);
   }
+
+  sugestUsername() {
+    const sugestedName = 'superuser';
+    this.submitForm.setValue({
+      userData: {
+        username: sugestedName,
+        email: sugestedName + '@mail.com'
+      },
+      secret: 'pet',
+      answer: 'Lasie',
+      gender: 'male'
+    });
+  }
 }

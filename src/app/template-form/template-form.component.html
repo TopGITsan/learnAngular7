@@ -16,7 +16,7 @@
               #username="ngModel">
               <div class="alert alert-danger" role="alert" *ngIf="username.invalid && username.touched">Please enter a valid username!</div>
           </div>
-          <button type="button" class="btn btn-info">Suggest a username</button>
+          <button type="button" class="btn btn-info" (click)="sugestUsername()">Suggest a username</button>
           <div class="form-group">
             <label for="email">Email</label>
             <input type="text" 
