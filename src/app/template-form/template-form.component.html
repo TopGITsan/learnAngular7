@@ -68,4 +68,15 @@
       </form>
     </div>
   </div>
+  <hr>
+  <div class="row" *ngIf="submited">
+    <div class="col-12 alert alert-info">
+      <h3>Your Data: </h3>
+      <p>Username: {{user.username}}</p>
+      <p>Email: {{user.email}}</p>
+      <p>Secret Question: {{user.secretQuestion}}</p>
+      <p>Secret Answer: {{user.secretAnswer}}</p>
+      <p>Gender: {{user.gender }}</p>
+    </div>
+  </div>
 </div>

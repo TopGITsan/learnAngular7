@@ -11,6 +11,15 @@ export class TemplateFormComponent implements OnInit {
   defaultQuestion = 'pet';
   answer = '';
   genders = ['male', 'female'];
+  user = {
+    username: '',
+    email: '',
+    secretQuestion: '',
+    secretAnswer: '',
+    gender: ''
+  };
+  submited = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -21,7 +30,14 @@ export class TemplateFormComponent implements OnInit {
   // }
 
   onSubmit() {
-    console.log(this.submitForm);
+    this.submited = true;
+    this.user.username =  this.submitForm.value.userData.username;
+    this.user.email =  this.submitForm.value.userData.email;
+    this.user.secretQuestion =  this.submitForm.value.secret;
+    this.user.secretAnswer =  this.submitForm.value.answer;
+    this.user.gender =  this.submitForm.value.gender;
+
+    this.submitForm.reset();
   }
 
   sugestUsername() {
