@@ -9,6 +9,7 @@ import { NgForm } from '@angular/forms';
 export class TemplateFormComponent implements OnInit {
   @ViewChild('f') submitForm: NgForm;
   defaultQuestion = 'pet';
+  answer = '';
   constructor() { }
 
   ngOnInit() {
