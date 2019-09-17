@@ -26,14 +26,19 @@ export class TemplateFormComponent implements OnInit {
 
   sugestUsername() {
     const sugestedName = 'superuser';
-    this.submitForm.setValue({
+    // this.submitForm.setValue({
+    //   userData: {
+    //     username: sugestedName,
+    //     email: sugestedName + '@mail.com'
+    //   },
+    //   secret: 'pet',
+    //   answer: 'Lasie',
+    //   gender: 'male'
+    // });
+    this.submitForm.form.patchValue({
       userData: {
-        username: sugestedName,
-        email: sugestedName + '@mail.com'
-      },
-      secret: 'pet',
-      answer: 'Lasie',
-      gender: 'male'
-    });
+        username: sugestedName
+      }
+    })
   }
 }
