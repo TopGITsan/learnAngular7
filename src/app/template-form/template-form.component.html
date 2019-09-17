@@ -49,7 +49,19 @@
             class="form-control" 
             required></textarea>
         </div>
-      <div class="alert alert-light" role="alert">Answer: {{answer}}</div>
+        <div class="alert alert-light" role="alert">Answer: {{answer}}</div>
+        <div class="form-check" *ngFor="let gender of genders;let i=index;">
+          <label [for]="gender">
+            <input type="radio" 
+              name="gender" 
+              [id]="gender" 
+              [value]="gender" 
+              ngModel 
+              class="form-check-input" 
+              required>
+              {{gender}}
+          </label>
+        </div>
         <button type="submit" 
           class="btn btn-primary"
           [disabled]="!f.valid">Submit</button>

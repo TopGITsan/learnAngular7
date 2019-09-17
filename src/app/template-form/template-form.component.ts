@@ -10,6 +10,7 @@ export class TemplateFormComponent implements OnInit {
   @ViewChild('f') submitForm: NgForm;
   defaultQuestion = 'pet';
   answer = '';
+  genders = ['male', 'female'];
   constructor() { }
 
   ngOnInit() {
