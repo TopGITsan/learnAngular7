@@ -2,7 +2,9 @@
   <div class="row">
     <div class="col-12 col-sm10 col-md-8 col-sm-offset1 col-md-offset2">
       <form (ngSubmit)="onSubmit()" #f="ngForm">
-        <div id="user-data">
+        <div id="user-data" 
+          ngModelGroup="userData"
+          #userData="ngModelGroup">
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" 
@@ -28,6 +30,7 @@
               <div class="alert alert-danger" role="alert" *ngIf="email.invalid && email.touched" >Please enter a valid email!</div>
           </div>
         </div>
+        <div class="alert alert-danger" role="alert" *ngIf="userData.invalid && userData.touched">User data is invalid!</div>
         <div class="form-group">
           <label for="secret">Secret Question</label>
           <select id="secret" 
@@ -39,7 +42,12 @@
           </select>
         </div>
         <div class="form-group">
-          <textarea name="answer" id="answer" rows="2" [(ngModel)]="answer" class="form-control" required></textarea>
+          <textarea name="answer"
+            id="answer"
+            rows="2" 
+            [(ngModel)]="answer" 
+            class="form-control" 
+            required></textarea>
         </div>
       <div class="alert alert-light" role="alert">Answer: {{answer}}</div>
         <button type="submit" 
