@@ -19,6 +19,7 @@ import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     DropdownDirective,
     RecipeStartComponent,
     RecipeEditComponent,
-    TemplateFormComponent
+    TemplateFormComponent,
+    ReactiveFormComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [ShoppingListService],
