@@ -2,26 +2,28 @@
   <div class="row">
     <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" 
-            id="username" 
-            class="form-control"
-            formControlName="username"
-            placeholder="username">
-          <div *ngIf="signupForm.get('username').invalid && signupForm.get('username').touched" 
-            class="alert alert-warning">Please enter a username!
-          </div>  
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="text" 
-            id="email" 
-            class="form-control"
-            formControlName="email"
-            placeholder="email">
-            <div *ngIf="signupForm.get('email').invalid && signupForm.get('email').touched" 
-            class="alert alert-warning">Please enter a valid email!
+        <div formGroupName="userData">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" 
+              id="username" 
+              class="form-control"
+              formControlName="username"
+              placeholder="username">
+            <div *ngIf="signupForm.get('userData.username').invalid && signupForm.get('userData.username').touched" 
+              class="alert alert-warning">Please enter a username!
+            </div>  
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" 
+              id="email" 
+              class="form-control"
+              formControlName="email"
+              placeholder="email">
+              <div *ngIf="signupForm.get('userData.email').invalid && signupForm.get('userData.email').touched" 
+              class="alert alert-warning">Please enter a valid email!
+            </div>
           </div>
         </div>
         <div class="form-check" *ngFor="let g of genders;">
