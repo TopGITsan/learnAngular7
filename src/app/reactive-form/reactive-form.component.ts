@@ -24,6 +24,21 @@ export class ReactiveFormComponent implements OnInit {
       'hobbies': new FormArray([], Validators.required)
     });
 
+    this.signupForm.setValue({
+      userData: {
+        username: 'Top',
+        email: 'top@top.com'
+      },
+      gender: 'male',
+      hobbies: []
+    });
+
+    this.signupForm.patchValue({
+      userData: {
+        username: '91283012983'
+      }
+    });
+
     this.signupForm.valueChanges.subscribe(value => console.log(value));
     this.signupForm.statusChanges.subscribe(status => console.log(status));
   }
