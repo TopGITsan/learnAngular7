@@ -8,7 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ReactiveFormComponent implements OnInit {
   signupForm: FormGroup;
-  genders = ['male','female'];
+  genders = ['male', 'female'];
   constructor() { }
 
   ngOnInit() {
