@@ -3,6 +3,7 @@
     <div class="col-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
         <div formGroupName="userData">
+          <div *ngIf="signupForm.get('userData').invalid" class="alert alert-warning">Please enter valid user data!</div>
           <div class="form-group">
             <label for="username">Username</label>
             <input type="text" 
@@ -23,8 +24,11 @@
               class="form-control"
               formControlName="email"
               placeholder="email">
-              <div *ngIf="signupForm.get('userData.email').invalid && signupForm.get('userData.email').touched" 
-              class="alert alert-warning">Please enter a valid email!
+            <div *ngIf="signupForm.get('userData.email').invalid && signupForm.get('userData.email').touched" 
+              class="alert alert-warning">
+              <span *ngIf="signupForm.get('userData.email').errors['forbbidenEmail']">This email is forbbiden!</span>
+              <span *ngIf="signupForm.get('userData.email').errors['required']">This field is required!</span>
+              <span *ngIf="signupForm.get('userData.email').errors['email']">Please enter a valid email!</span>
             </div>
           </div>
         </div>
@@ -53,7 +57,7 @@
         <div *ngIf="signupForm.invalid && signupForm.touched" 
             class="alert alert-warning">Please enter valid data!
         </div>
-        <button class="btn btn-primary m-4" type="submit" [disabled]="signupForm.invalid">Submit</button>
+        <button class="btn btn-primary m-4" type="submit" >Submit</button>
       </form>
     </div>
   </div>
