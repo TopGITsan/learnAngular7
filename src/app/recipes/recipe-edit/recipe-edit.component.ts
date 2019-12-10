@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, Observer, interval, Subscription } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
+import { FormGroup, FormControl } from '@angular/forms';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -13,12 +15,14 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   editMode = false;
   numberObservableSubs: Subscription;
   customObservable: Subscription;
-  constructor(private route: ActivatedRoute) { }
+  recipeForm: FormGroup;
+  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.id = +params.id;
       this.editMode = params.id != null;
+      this.initForm();
     });
     // learn more at reactivex.io/rxjs
     // create an observable witch runs infinitly
@@ -38,6 +42,25 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
       () => { console.log('Data stream completed'); }
     );
   }
+
+  private initForm() {
+    let recipeName = '';
+    let recipeImagePath = '';
+    let recipeDescription= '';
+
+    if (this.editMode) {
+      const recipe = this.recipeService.getRecipe(this.id);
+      recipeName = recipe.name;
+      recipeImagePath = recipe.imagePath;
+      recipeDescription = recipe.description;
+    }
+    this.recipeForm = new FormGroup({
+      'name': new FormControl(recipeName),
+      'imagePath': new FormControl(recipeImagePath),
+      'description': new FormControl(recipeDescription)
+    });
+  }
+
   // unsubscribe your observables when you navigate away from the page
   ngOnDestroy() {
     this.numberObservableSubs.unsubscribe();
