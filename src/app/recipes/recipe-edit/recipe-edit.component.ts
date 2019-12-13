@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Observable, Observer, interval, Subscription } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
-import { FormGroup, FormControl, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 
 @Component({
@@ -75,6 +75,15 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
 
   onSubmit(){
     console.log(this.recipeForm);
+  }
+
+  onAddIngredient(){
+    (<FormArray>this.recipeForm.get('ingredients')).insert(0,
+      new FormGroup({
+        'name': new FormControl('', Validators.required),
+        'amount': new FormControl('', Validators.required)
+      })
+    )
   }
 
   // unsubscribe your observables when you navigate away from the page
