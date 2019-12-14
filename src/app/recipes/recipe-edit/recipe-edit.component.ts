@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Observer, interval, Subscription } from 'rxjs';
 import { map, filter, switchMap } from 'rxjs/operators';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
+import { Recipe } from '../recipe.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -16,7 +17,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   numberObservableSubs: Subscription;
   customObservable: Subscription;
   recipeForm: FormGroup;
-  constructor(private route: ActivatedRoute, private recipeService: RecipeService) { }
+  constructor(private route: ActivatedRoute,
+              private recipeService: RecipeService,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
@@ -73,8 +76,21 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
+    const newRecipe = new Recipe(
+      this.recipeForm.value.name,
+      this.recipeForm.value.description,
+      this.recipeForm.value.imagePath,
+      this.recipeForm.value.ingredients
+    );
     console.log(this.recipeForm);
+    if (this.editMode) {
+      this.recipeService.updateRecipe(this.id, newRecipe);
+    } else {
+      this.recipeService.addRecipe(newRecipe);
+      // or this.recipeService.addRecipe(this.recipeForm.value);
+    }
+    this.onCancel();
   }
 
   onAddIngredient(){
@@ -90,5 +106,9 @@ export class RecipeEditComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.numberObservableSubs.unsubscribe();
     this.customObservable.unsubscribe();
+  }
+
+  onCancel(){
+    this.router.navigate(['../'], {relativeTo : this.route});
   }
 }
