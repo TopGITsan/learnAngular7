@@ -13,3 +13,42 @@ export class Recipe {
     this.ingredients = ingredients;
   }
 }
+
+
+export interface IContactPfFormInterface {
+  contactDetails: PfContact;
+  emails: ContactEmail[];
+  addresses: ContactAddress[];
+}
+
+export interface IContactPgFormInter {
+  contactDetails: PgContact;
+  emails: ContactEmail[];
+  addresses: ContactAddress[];
+}
+
+export interface PfContact {
+  firstName: string;
+  lastName: string;
+  codiceFiscale: string;
+  partitaIva: string;
+}
+
+export interface ContactEmail {
+  selected: boolean;
+  pec: boolean;
+  email: string;
+}
+
+export interface ContactAddress {
+  street: string;
+  number: number;
+  city: string;
+  country: string;
+}
+
+export interface PgContact {
+  description: string;
+  codiceFiscale: string;
+  partitaIva: string;
+}
