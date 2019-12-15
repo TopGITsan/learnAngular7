@@ -1,3 +1,118 @@
-<p>
-  r-form works!
-</p>
+<div class="container">
+  <h3>Reactive form</h3>
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" formControlName="name" class="form-control">
+      <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+        <span *ngIf="name.errors.required">Name is required</span>
+        <span *ngIf="name.errors.minlength">Name must be at least {{name.errors.minlength.requiredLength}} caracters long</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" formControlName="username" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" formControlName="email" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="text" formControlName="phone" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="website">website</label>
+      <input type="text" formControlName="website" class="form-control">
+    </div>
+
+    <fieldset formGroupName="address">
+      <legend>Address</legend>
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" formControlName="street" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="suite">Suite</label>
+        <input type="text" formControlName="suite" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" formControlName="city" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="zipcode">Zipcode</label>
+        <input type="text" formControlName="zipcode" class="form-control">
+      </div>
+      <fieldset formGroupName="geo">
+        <legend>Geo</legend>
+        <div class="form-group">
+          <label for="lat">Lat</label>
+          <input type="text" formControlName="lat" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="lng">Lng</label>
+          <input type="text" formControlName="lng" class="form-control">
+        </div>
+      </fieldset>
+    </fieldset>
+
+    <fieldset formGroupName="company">
+      <legend>Company</legend>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="catchPhrase">CatchPhrase</label>
+        <input type="text" formControlName="catchphrase" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="bs">BS</label>
+        <input type="text" formControlName="bs" class="form-control">
+      </div>
+    </fieldset>
+
+    <fieldset formArrayName="hobbies">
+      <legend>Hobbies | <span class="btn btn-info" (click)="onAddHobbie()">+</span></legend>
+      <div class="input-group mb-3" *ngFor="let hobbieGroup of userForm.get('hobbies').controls; let i=index;" [formGroupName]="i">
+        
+        <div class="input-group-prepend">
+          <div class="input-group-text">
+            <span>main</span>
+            <input type="radio" 
+              aria-label="Radio button for following text input" 
+              formControlName="prefered" 
+              name="prefered" 
+              [checked]="i == 0" 
+              value="main" 
+              (change)="toggleCheck()">
+          </div>
+        </div>
+      
+        <input type="text" 
+          class="form-control" 
+          placeholder="hobbie" 
+          aria-label="email" 
+          aria-describedby="" 
+          formControlName="hobbie">
+
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span>pec</span>
+            <input type="checkbox" 
+              aria-label="Checkbox for following text input" 
+              formControlName="ispec">
+          </div>
+        </div>
+
+        <div class="input-group-append">
+          <div class="input-group-text" type="button" (click)="onDeleteHobbie(i)">X</div>
+        </div>
+      </div>
+
+    </fieldset>
+    
+    <button class="btn btn-primary" type="submit">Submit</button>
+  </form>
+</div>
