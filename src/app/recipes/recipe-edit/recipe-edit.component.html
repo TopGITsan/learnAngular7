@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <form>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"> 
       <div class="row">
         <div class="col-12">
           <button type="submit" class="btn btn-success">Save</button>
@@ -10,55 +10,55 @@
       <div class="row">
         <div class="col-12">
           <label for="firstName">First Name</label>
-          <input type="text" id="firstName" class="form-control">
+          <input type="text" id="firstName" class="form-control" formControlName='firstName'>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
           <label for="lastName">Last Name</label>
-          <input type="text" id="firstName" class="form-control">
+          <input type="text" id="firstName" class="form-control" formControlName='lastName'>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
           <label for="codiceFiscale">codiceFiscale</label>
-          <input type="text" id="codiceFiscale" class="form-control">
+          <input type="text" id="codiceFiscale" class="form-control" formControlName='codiceFiscale'>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
           <label for="partitaIva">partitaIva</label>
-          <input type="text" id="partitaIva" class="form-control">
+          <input type="text" id="partitaIva" class="form-control" formControlName='partitaIva'>
         </div>
       </div>
       <hr>
       <fieldset>
-        <legend>Email <span type="button" class="btn btn-info">+</span></legend>
-        <div class="row">
+        <legend>Email <span type="button" class="btn btn-info" (click)="onAddEmail()">+</span></legend>
+        <div class="row" formArrayName='emails'>
           <div class="col-12">
 
-            <div class="row">
+            <div class="row mb-2" *ngFor="let email of contactForm.get('emails').controls; let i= index;" [formGroupName]="i">
               <div class="col-12">
                 <div class="input-group">
                   <div class="input-group-prepend">
                     <div class="input-group-text">
-                      <input type="radio" aria-label="Radio button for following text input">
+                      <input type="checkbox" formControlName="selected" (click)="onCheckOnlyOne(i)">
                     </div>
                   </div>
 
-                  <input type="text" class="form-control" placeholder="email">
+                  <input type="text" class="form-control" placeholder="email" formControlName="email">
                   
                   <div class="input-group-append">
                     <div class="input-group-text">
-                      <input type="checkbox" aria-label="Checkbox for following text input">
+                      <input type="checkbox" formControlName="ispec">
                       Pec
                     </div>
                   </div>
                   <div class="input-group-append">
-                    <button type="button" class="btn btn-danger">X</button>
+                    <button type="button" class="btn btn-danger" (click)="onRemoveEmail(i)">X</button>
                   </div>
                 </div>
 
@@ -71,40 +71,40 @@
       <hr>
       <fieldset>
         
-        <legend>Address <span type="button" class="btn btn-info">+</span></legend>
-        <div class="row">
+        <legend>Address <span type="button" class="btn btn-info" (click)="onAddAddress()">+</span></legend>
+        <div class="row" formArrayName='addresses'>
           <div class="col-12">
 
-            <div class="row">
+            <div class="row" *ngFor="let address of contactForm.get('addresses').controls; let i=index;" [formGroupName]="i">
               <div class="col-12">
                 
-                <button type="button" class="btn btn-danger">X</button>
+                <button type="button" class="btn btn-danger" (click)="onRemoveAddress(i)">X</button>
                 
                 <div class="row">
                   <div class="col-12">
                     <label for="street">Street</label>
-                    <input type="text" id="street" class="form-control">
+                    <input type="text" id="street" class="form-control" formControlName="street">
                   </div>
                 </div>
           
                 <div class="row">
                   <div class="col-12">
                     <label for="number">Number</label>
-                    <input type="text" id="number" class="form-control">
+                    <input type="text" id="number" class="form-control" formControlName="number">
                   </div>
                 </div>
           
                 <div class="row">
                   <div class="col-12">
                     <label for="city">City</label>
-                    <input type="text" id="city" class="form-control">
+                    <input type="text" id="city" class="form-control" formControlName="city">
                   </div>
                 </div>
           
                 <div class="row">
                   <div class="col-12">
                     <label for="country">Country</label>
-                    <input type="text" id="country" class="form-control">
+                    <input type="text" id="country" class="form-control" formControlName="country">
                   </div>
                 </div>
               </div>

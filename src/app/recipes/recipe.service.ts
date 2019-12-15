@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Recipe } from './recipe.model';
+import { Recipe, IContactPfFormInterface, PfContact, ContactEmail, ContactAddress } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
 
 import { ShoppingListService } from '../shopping-list/shopping-list.service';
@@ -24,6 +24,10 @@ export class RecipeService {
       'http://assets.kraftfoods.com/recipe_images/opendeploy/Table-for-Two_Lasagna_640x428.jpg',
       [new Ingredient('Meat', 8), new Ingredient('Mozzarella', 6)]
     )
+  ];
+
+  private contacts: IContactPfFormInterface[] = [
+    
   ];
 
   constructor(private slService: ShoppingListService) {}
