@@ -32,8 +32,8 @@
       <a class="dropdown-toggle bg-primary p-2" role="button" (click)="onShowDropdown()" style="cursor: pointer">Manage</a>
       <li class="dropdown dropleft">
         <ul class="dropdown-menu mt-4" [ngClass]="{show: isOpen === true}">
-          <li><a class="dropdown-item" style="cursor: pointer">Save Data</a></li>
-          <li><a class="dropdown-item" style="cursor: pointer">Fetch Data</a></li>
+          <li><a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
+          <li><a class="dropdown-item" style="cursor: pointer" (click)="onGetRecipes()">Fetch Data</a></li>
         </ul>
       </li>
     </ul>
