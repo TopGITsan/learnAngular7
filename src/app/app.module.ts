@@ -24,6 +24,8 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RFormComponent } from './r-form/r-form.component';
 import { RecipeService } from './recipes/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
+import { SignupComponent } from './auth/signup/signup.component';
+import { SigninComponent } from './auth/signin/signin.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { DataStorageService } from './shared/data-storage.service';
     RecipeEditComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
-    RFormComponent
+    RFormComponent,
+    SignupComponent,
+    SigninComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   providers: [ShoppingListService, RecipeService, DataStorageService],
