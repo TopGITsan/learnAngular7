@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,8 @@ import { DataStorageService } from '../shared/data-storage.service';
 })
 export class HeaderComponent implements OnInit {
   isOpen = false;
-  constructor(private dataStorageService: DataStorageService) {}
+  constructor(private dataStorageService: DataStorageService,
+              public authService: AuthService) {}
 
   ngOnInit() {}
 
@@ -16,14 +18,14 @@ export class HeaderComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
-  onSaveData(){
+  onSaveData() {
     this.dataStorageService.storeRecipes().subscribe(
       (response: Response) => { console.log(response); },
       (error: Response) => { console.log(error); }
     );
   }
 
-  onGetRecipes(){
+  onGetRecipes() {
     this.dataStorageService.getRecipes();
   }
 }

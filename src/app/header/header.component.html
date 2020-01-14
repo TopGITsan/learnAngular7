@@ -29,9 +29,15 @@
       </li>
     </ul>
     <ul class="navbar-nav navbar-right">
-      <a class="nav-link" routerLink='signup' routerLinkActive='active'>Register</a>
-      <a class="nav-link" routerLink='signin' routerLinkActive='active'>Log In</a>
-      <a class="dropdown-toggle bg-primary p-2" role="button" (click)="onShowDropdown()" style="cursor: pointer">Manage</a>
+      <ng-template [ngIf]="!authService.isAuthenticated()">
+        <a class="nav-link" routerLink='signup' routerLinkActive='active'>Register</a>
+        <a class="nav-link" routerLink='signin' routerLinkActive='active'>Log In</a>
+      </ng-template>
+      <a class="dropdown-toggle bg-primary p-2" 
+        role="button" 
+        (click)="onShowDropdown()"
+        *ngIf="authService.isAuthenticated()"
+        style="cursor: pointer">Manage</a>
       <li class="dropdown dropleft">
         <ul class="dropdown-menu mt-4" [ngClass]="{show: isOpen === true}">
           <li><a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
