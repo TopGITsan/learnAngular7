@@ -33,6 +33,7 @@
         <a class="nav-link" routerLink='signup' routerLinkActive='active'>Register</a>
         <a class="nav-link" routerLink='signin' routerLinkActive='active'>Log In</a>
       </ng-template>
+      <a class="nav-link" style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Logout</a>
       <a class="dropdown-toggle bg-primary p-2" 
         role="button" 
         (click)="onShowDropdown()"

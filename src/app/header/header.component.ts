@@ -28,4 +28,8 @@ export class HeaderComponent implements OnInit {
   onGetRecipes() {
     this.dataStorageService.getRecipes();
   }
+
+  onLogout(){
+    this.authService.logout();
+  }
 }
