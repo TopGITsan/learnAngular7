@@ -5,8 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 
@@ -16,14 +14,13 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RFormComponent } from './r-form/r-form.component';
 import { RecipeService } from './recipes/recipe.service';
 import { DataStorageService } from './shared/data-storage.service';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './auth/auth-guard.service';
 
 import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingModule } from './shopping-list/shopping.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +28,7 @@ import { ShoppingModule } from './shopping-list/shopping.module';
     HeaderComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
-    RFormComponent,
-    SignupComponent,
-    SigninComponent
+    RFormComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +38,9 @@ import { ShoppingModule } from './shopping-list/shopping.module';
     HttpClientModule,
     RecipesModule,
     SharedModule,
-    ShoppingModule],
+    ShoppingModule,
+    AuthModule
+  ],
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
