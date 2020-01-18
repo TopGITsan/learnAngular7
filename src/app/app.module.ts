@@ -23,26 +23,27 @@ import { AuthGuard } from './auth/auth-guard.service';
 
 import { RecipesModule } from './recipes/recipes.module';
 import { SharedModule } from './shared/shared.module';
+import { ShoppingModule } from './shopping-list/shopping.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ShoppingListComponent,
-    ShoppingEditComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
     RFormComponent,
     SignupComponent,
     SigninComponent
   ],
-  imports: [BrowserModule,
+  imports: [
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     RecipesModule,
-    SharedModule],
+    SharedModule,
+    ShoppingModule],
   providers: [ShoppingListService, RecipeService, DataStorageService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
