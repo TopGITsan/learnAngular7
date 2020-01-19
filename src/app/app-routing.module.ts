@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule'},
-  {path: 'shopping-list', component: ShoppingListComponent },
+  {path: 'shopping-list', loadChildren: './shopping-list/shopping.module#ShoppingModule' },
   {path: 'template-form', component: TemplateFormComponent },
   {path: 'reactive-form', component: ReactiveFormComponent },
   {path: 'r-form', component: RFormComponent}
