@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { TemplateFormComponent } from './template-form/template-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { RFormComponent } from './r-form/r-form.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './core/home/home.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
