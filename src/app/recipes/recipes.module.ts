@@ -10,6 +10,7 @@ import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.compo
 
 import { RecipesRoutingModule } from './recipes.routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { AuthGuard } from '../auth/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,9 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     RecipesRoutingModule,
     SharedModule
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class RecipesModule {}
