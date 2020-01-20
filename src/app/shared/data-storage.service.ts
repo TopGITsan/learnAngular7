@@ -15,14 +15,16 @@ export class DataStorageService {
     const token = this.authService.getToken();
     const url = 'https://top-ng-recipebook.firebaseio.com/recipes.json?auth=' + token;
     const body = this.recipeService.getRecepies();
-    return this.http.put(url, body);
+    return this.http.put(url, body, {
+        observe: 'events'
+      });
   }
 
   getRecipes() {
     const token = this.authService.getToken();
     const url = 'https://top-ng-recipebook.firebaseio.com/recipes.json?auth=' + token;
 
-    this.http.get(url).pipe(
+    this.http.get<Recipe[]>(url).pipe(
       map((response: Recipe[]) => {
         const recipes: Recipe[] = response;
         for (const recipe of recipes) {
