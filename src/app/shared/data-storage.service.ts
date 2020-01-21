@@ -29,10 +29,12 @@ export class DataStorageService {
   }
 
   getRecipes() {
-    const token = this.authService.getToken();
-    const url = 'https://top-ng-recipebook.firebaseio.com/recipes.json?auth=' + token;
+    // const token = this.authService.getToken();
+    // const url = 'https://top-ng-recipebook.firebaseio.com/recipes.json?auth=' + token;
 
-    this.http.get<Recipe[]>(url).pipe(
+    const urlForInterceptor = 'https://top-ng-recipebook.firebaseio.com/recipes.json';
+
+    this.http.get<Recipe[]>(urlForInterceptor, {observe: 'body', responseType: 'json'}).pipe(
       map((response: Recipe[]) => {
         const recipes: Recipe[] = response;
         for (const recipe of recipes) {
