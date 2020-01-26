@@ -15,15 +15,24 @@
       <li class="nav-item">
         <a class="nav-link" routerLink='shopping-list' routerLinkActive='active'>Shopping-List</a>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" routerLink='template-form' routerLinkActive='active'>Template-Form</a>
+        <a class="nav-link dropdown-toggle" (click)="onShowDropdown('form')">Forms</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink='reactive-form' routerLinkActive='active'>Reactive-Form</a>
+      <li class="dropdown dropright">
+        <ul class="dropdown-menu" [ngClass]="{show: isOpenFormMenu === true}">
+          <li>
+            <a class="dropdown-item" routerLink='template-form' routerLinkActive='active'>Template-Form</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink='reactive-form' routerLinkActive='active'>Reactive-Form</a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink='r-form' routerLinkActive='active'>R-Form</a>
+          </li>
+        </ul>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink='r-form' routerLinkActive='active'>R-Form</a>
-      </li>
+      
       <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li>
@@ -36,11 +45,11 @@
       <a class="nav-link" style="cursor: pointer;" (click)="onLogout()" *ngIf="authService.isAuthenticated()">Logout</a>
       <a class="dropdown-toggle bg-primary p-2" 
         role="button" 
-        (click)="onShowDropdown()"
+        (click)="onShowDropdown('user')"
         *ngIf="authService.isAuthenticated()"
         style="cursor: pointer">Manage</a>
       <li class="dropdown dropleft">
-        <ul class="dropdown-menu mt-4" [ngClass]="{show: isOpen === true}">
+        <ul class="dropdown-menu mt-4" [ngClass]="{show: isOpenUserMenu === true}">
           <li><a class="dropdown-item" style="cursor: pointer" (click)="onSaveData()">Save Data</a></li>
           <li><a class="dropdown-item" style="cursor: pointer" (click)="onGetRecipes()">Fetch Data</a></li>
         </ul>

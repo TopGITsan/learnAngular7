@@ -9,14 +9,17 @@ import { HttpEvent } from '@angular/common/http';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  isOpen = false;
+  isOpenUserMenu = false;
+  isOpenFormMenu = false;
+
   constructor(private dataStorageService: DataStorageService,
               public authService: AuthService) {}
 
   ngOnInit() {}
 
-  onShowDropdown() {
-    this.isOpen = !this.isOpen;
+  onShowDropdown(type: string) {
+    type === 'user' ? (this.isOpenUserMenu = !this.isOpenUserMenu)
+      : (type === 'form') ? (this.isOpenFormMenu = !this.isOpenFormMenu) : null;
   }
 
   onSaveData() {
