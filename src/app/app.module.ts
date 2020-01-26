@@ -13,13 +13,16 @@ import { RFormComponent } from './r-form/r-form.component';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { CoreModule } from './core/core.module';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { UploadService } from './upload-file/upload.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateFormComponent,
     ReactiveFormComponent,
-    RFormComponent
+    RFormComponent,
+    UploadFileComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { CoreModule } from './core/core.module';
     AuthModule,
     CoreModule
   ],
+  providers:[UploadService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
