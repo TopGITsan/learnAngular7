@@ -24,7 +24,7 @@ export class DataStorageService {
     //     params: param
     //     // headers: header
     //   });
-    const req = new HttpRequest('PUT', url, body, {reportProgress: true, params: param});
+    const req = new HttpRequest('PUT', url, body, {reportProgress: true});
     return this.http.request(req);
   }
 
